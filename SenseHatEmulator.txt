@@ -1,0 +1,22 @@
+from sense_hat import SenseHat
+import time
+
+s = SenseHat()
+s.low_light = True
+
+blue = (0, 0, 255)
+green = (0, 255, 0)
+red = (255, 0, 0)
+
+while True: 
+    temp = s.get_temperature()
+    
+    if temp < 35:
+      s.clear(blue)
+    elif temp > 39:
+      s.clear(red)
+    else:
+      s.clear(green)
+    
+    
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BabyCool</title>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+</head>
+<body>
+    <div id="app">
+      <div class="row">
+        <!-- LEFT SIDE -->
+        <div class="col-md-6" style="padding: 5%">
+          
+          <h5 class="text-center">Buttons</h5>
+          <button class="btn btn-primary w-100" style="margin-bottom: 5%;" @click="GetBabyData">Get All Baby Data</button>
+          
+          <div class="row w-100" style="padding-left: 1rem">
+            <input type="number" class="form-control" placeholder="UnitNo" style="width: 33%" id="unitNoInput"  v-model.number="unitNo">
+            <input type="number" class="form-control" placeholder="Breaths per minute" style="width: 33%" id="breathInput" v-model.number="breath">
+            <select class="form-control" style="width: 33%" v-model="crying">
+              <option>Græder</option>
+              <option>Græder ikke</option>
+            </select>
+          </div>
+          
+          <button class="btn btn-primary w-100" @click="CreateBabyData">Create New Baby Data</button>
+          
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col-md-6" style="padding: 5%;">
+          <h5 class="text-center">Baby Data</h5>
+          <table class="table table-hover table-striped table-bordered text-dark w-100">
+            <thead>
+                <th class="text-center"><b>Id</b></th>
+                <th class="text-center"><b>UnitNo</b></th>
+                <th class="text-center"><b>Breaths</b></th>
+                <th class="text-center"><b>Crying</b></th>
+            </thead>
+            <tbody>
+                <tr v-for="data in babyData" class="text-dark">
+                  <td class="text-center">{{data.id}}</td>
+                  <td class="text-center">{{data.unitNo}}</td>
+                  <td class="text-center">{{data.breath}}</td>
+                  <td class="text-center">{{data.crying}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+  <script src="main.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</body>
+</html>
